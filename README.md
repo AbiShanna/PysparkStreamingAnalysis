@@ -14,8 +14,8 @@ should be sent to Kafka topic created above.
 4. Configure Logstash, Elasticsearch, and Kibana to read from the Kafka topic and set up visualization of sentiment.
 <br />
 Required Libraries: <br/>
-Tweepy
-nltk <br/>
+Tweepy,
+nltk <br/><br/>
 
 Pre-requirements: <br />
 1. Start kafkaserver and create a topic to transfer sentiment data - 'sentiments'.
