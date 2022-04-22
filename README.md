@@ -44,9 +44,9 @@ kafkaWritter.py - Reads stream of tweets from TCP sockets, pre-process, classify
 <br />
 Execution: <br/>
 1. Execute twitterReader.py followed by kafkaWritter.py.
-2. A new index 'sentiments' will be available in elasticsearch and the same can be visualized in Kibana like below.
-![alt text](./plots/1.img)<br/>
-![alt text](./plots/2.img)<br/>
-![alt text](./plots/3.img)
+2. A new index 'sentiments' will be available in elasticsearch and the same can be visualized in Kibana like below. <br/>
+![alt text](./1.png)<br/>
+![alt text](./2.png)<br/>
+![alt text](./3.png)
 
 
