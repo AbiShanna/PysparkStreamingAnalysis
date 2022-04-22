@@ -37,7 +37,6 @@ output {<br/>
 *
 4. Start ELK services.
 
-
 Modules: <br />
 twitterReader.py - To conitunously read tweets for the given hashtag #covid and is make available at TCP socket port 5555.
 <br />
@@ -45,6 +44,9 @@ kafkaWritter.py - Reads stream of tweets from TCP sockets, pre-process, classify
 <br />
 Execution: <br/>
 1. Execute twitterReader.py followed by kafkaWritter.py.
-2. A new index 'sentiments' will be available in elasticsearch and the same can be visualized in Kibana ike below.
+2. A new index 'sentiments' will be available in elasticsearch and the same can be visualized in Kibana like below.
+![alt text](./plots/1.img)<br/>
+![alt text](./plots/2.img)<br/>
+![alt text](./plots/3.img)
 
 
