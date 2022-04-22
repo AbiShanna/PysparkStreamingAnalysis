@@ -20,28 +20,31 @@ nltk <br/>
 Pre-requirements: <br />
 1. Start kafkaserver and create a topic to transfer sentiment data - 'sentiments'.
 2. Configure Logstash (logstash.conf) to read from kafka topic i.e. source and write to elasticsearch index. 
-***
-input {
-  kafka {
-    bootstrap_servers => "localhost:9092"
-    topics => "sentiments"
-    }
+*
+input { <br/>
+  kafka {<br/>
+    bootstrap_servers => "localhost:9092" <br/>
+    topics => "sentiments" <br/>
+    }<br/>
 }
-
-output {
-  elasticsearch {
-    hosts => ["http://localhost:9200"]
-	index => "sentiments"
-  }
-}
-***
+<br />
+output {<br/>
+  elasticsearch {<br/>
+    hosts => ["http://localhost:9200"] <br />
+	index => "sentiments" <br />
+  }<br />
+}<br />
+*
 4. Start ELK services.
 
 
-Modules:
+Modules: <br />
 twitterReader.py - To conitunously read tweets for the given hashtag #covid and is make available at TCP socket port 5555.
 <br />
 kafkaWritter.py - Reads stream of tweets from TCP sockets, pre-process, classify sentiments and the value sent to kafka topic 'sentiments'.
 <br />
+Execution: <br/>
+1. Execute twitterReader.py followed by kafkaWritter.py.
+2. A new index 'sentiments' will be available in elasticsearch and the same can be visualized in Kibana ike below.
 
 
