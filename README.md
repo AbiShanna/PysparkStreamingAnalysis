@@ -21,20 +21,19 @@ Pre-requirements: <br />
 1. Start kafkaserver and create a topic to transfer sentiment data - 'sentiments'.
 2. Configure Logstash (logstash.conf) to read from kafka topic i.e. source and write to elasticsearch index. 
 <br/>
-input {
-_  kafka {
-    bootstrap_servers => "localhost:9092"
-    topics => "sentiments"
-    }
-}
+input { <br/>
+ kafka {<br/>
+    bootstrap_servers => "localhost:9092"<br/>
+    topics => "sentiments"<br/>
+    }<br />
+} <br/>
 
-output {
-  elasticsearch {
-    hosts => ["http://localhost:9200"]
-	index => "sentiments"
-  }
-}_
-
+output {<br />
+  elasticsearch {<br />
+    hosts => ["http://localhost:9200"]<br/>
+	index => "sentiments"<br/>
+  }<br/>
+}<br/>
 4. Start ELK services.
 
 Modules: <br />
@@ -45,8 +44,8 @@ kafkaWritter.py - Reads stream of tweets from TCP sockets, pre-process, classify
 Execution: <br/>
 1. Execute twitterReader.py followed by kafkaWritter.py.
 2. A new index 'sentiments' will be available in elasticsearch and the same can be visualized in Kibana like below. <br/>
-![alt text](./1.png)<br/>
-![alt text](./2.png)<br/>
-![alt text](./3.png)
+![alt text](./1.png width="50")<br/>
+![alt text](./2.png width="25")<br/>
+![alt text](./3.png width="30")
 
 
