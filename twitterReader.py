@@ -38,7 +38,7 @@ class TweetsListener(Stream):
 
 def sendData(c_socket):
   twitter_stream = TweetsListener(consumer_key, consumer_secret, access_token, access_secret, csocket= c_socket)
-  twitter_stream.filter(track = 'russia', languages=["en"])
+  twitter_stream.filter(track = 'covid', languages=["en"])
 
 if __name__ == "__main__":
     
