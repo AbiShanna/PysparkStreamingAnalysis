@@ -20,6 +20,7 @@ nltk <br/><br/>
 Pre-requirements: <br />
 1. Start kafkaserver and create a topic to transfer sentiment data - 'sentiments'.
 2. Configure Logstash (logstash.conf) to read from kafka topic i.e. source and write to elasticsearch index. <br/>
+
 *input {*<br/>
  *kafka {* <br/>
     *bootstrap_servers => "localhost:9092"*
