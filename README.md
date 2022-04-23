@@ -21,19 +21,19 @@ Pre-requirements: <br />
 1. Start kafkaserver and create a topic to transfer sentiment data - 'sentiments'.
 2. Configure Logstash (logstash.conf) to read from kafka topic i.e. source and write to elasticsearch index. 
 <br/>
-input { <br/>
+*input { <br/>
  kafka {<br/>
     bootstrap_servers => "localhost:9092"<br/>
     topics => "sentiments"<br/>
     }<br />
-} <br/>
+} <br/>*
 
-output {<br />
+*output {<br />
   elasticsearch {<br />
     hosts => ["http://localhost:9200"]<br/>
 	index => "sentiments"<br/>
   }<br/>
-}<br/>
+}<br/>*
 4. Start ELK services.
 
 Modules: <br />
