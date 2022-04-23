@@ -38,6 +38,7 @@ Pre-requirements: <br />
 	  *}*<br/>
 	*}<br/>*
 3. Start ELK services. <br/><br/>
+
 Modules: <br />
 twitterReader.py - To conitunously read tweets for the given hashtag #covid and is make available at TCP socket port 5555.
 <br />
