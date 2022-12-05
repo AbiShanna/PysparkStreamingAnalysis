@@ -1,25 +1,24 @@
 # PysparkStreamingAnalysis
 <br />
-Problem statement:<br />
+## Problem statement:<br />
 Create a Pyspark Streaming application that will continuously read data from Twitter, analyze them for their sentiment (sentiment classification - positive, neutral, negative), and send the sentiment values to Apache Kafka topic. Read the sentiment data from kafka topic using ElasticsearchLogstashKibana and visualize.
 <br /><br />
-    
-   **Twitter -> Spark -> sentiments -> kafka -> ELK** <br />
-   <br /><br />
-Steps to implement: <br />
-1. Create a PySpark application that continuously reads tweets from Twitter relating to a search term e.g. #covid.
-2. Create a topic for data exchange. The Spark Structured Streaming application should send sentiment data to Kafka.
-3. Analyze the gathered tweets for their individual sentiment continuously. At the end of every window, a message containing the sentiment
-should be sent to Kafka topic created above.
-4. Configure Logstash, Elasticsearch, and Kibana to read from the Kafka topic and set up visualization of sentiment.
-<br />
-Required Libraries: <br/>
-Tweepy,
-nltk <br/><br/>
+## Architecture:<br />
 
-Pre-requirements: <br />
-1. Start kafkaserver and create a topic to transfer sentiment data - 'sentiments'.
-2. Configure Logstash (logstash.conf) to read from kafka topic i.e. source and write to elasticsearch index. <br/>
+<br/><img src="flowchart.png" alt="flowchart" width="400" height="450" /><br/>
+   <br /><br />
+## Steps to implement: <br />
+
+1.	Start the zookeeper server: 
+.\zookeeper-server-start.bat ..\..\config\zookeeper.properties inside kafka\bin\windows
+
+2. Start the Kafka server: 
+.\kafka-server-start.bat ..\..\config\server.properties inside kafka\bin\windows
+
+3. Create kafka topic: (inside kafka\bin\windows)
+.\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic twittersenti 
+
+4. Configure Logstash (logstash.conf) to read from kafka topic i.e. source and write to elasticsearch index. <br/>
 
 	*input {*<br/>
 	 *kafka {* <br/>
@@ -37,18 +36,30 @@ Pre-requirements: <br />
 		*index => "sentiments"* <br/>
 	  *}*<br/>
 	*}<br/>*
-3. Start ELK services. <br/><br/>
 
-Modules: <br />
-twitterReader.py - To conitunously read tweets for the given hashtag #covid and is make available at TCP socket port 5555.
-<br />
-kafkaWritter.py - Reads stream of tweets from TCP sockets, pre-process, classify sentiments and the value sent to kafka topic 'sentiments'.
-<br />
-Execution: <br/>
-1. Execute twitterReader.py followed by kafkaWritter.py.
-2. A new index 'sentiments' will be available in elasticsearch and the same can be visualized in Kibana like below. <br/>
-![alt text](./1.png)<br/>
-![alt text](./2.png)<br/>
-![alt text](./3.png)
+5. Start elastic search by running the command elasticsearch inside the bin directory of elasticsearch <br/>
+
+6. Start logstash by running the following command inside logstash folder
+<br/>bin\logstash.bat -f config\logstash.conf<br/>
+
+7. Start Kibana by running the command .\kibana.bat inside the bin directory of kibana <br/>
+
+8. To check if elastic search is working fine, type the following command and you should see the attached output <br/>
+<br/><br/> &nbsp;&nbsp;  http://localhost:9200/_cat/indices/twittersenti <br/>
+This should display the health status as yellow denoting that index is set.<br/>
+
+9. Run the read_tweets.py followed by write_tweets.ipynb <br/>
+	○	#covid tweets are filtered <br/>
+	○	Once the last cell of the write_tweets.ipynb is run, tweets gets classified based on sentiments and kibana displays real-time insights <br/>
+
+10. Enter http://localhost:5601/
+	○	Create index pattern: Stack Management => Data Views => Create Data Views<br/>
+	○	In the ‘Discover’ section, choose the kafka topic twittersenti<br/>
+	○	Real-time statistics on tweets will then be displayed<br/>
+	○	To generate graphs, create them in the dashboard with required fields.<br/>
+
+	<br/><img src="1.png" alt="1" width="400" height="450" /><br/>
+	<br/><img src="2.png" alt="2" width="400" height="450" /><br/>
+	<br/><img src="3.png" alt="3" width="400" height="450" /><br/>
 
 
