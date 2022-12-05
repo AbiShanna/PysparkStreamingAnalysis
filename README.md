@@ -1,6 +1,8 @@
 # PysparkStreamingAnalysis
+
 <br />
 ## Problem statement:
+
 <br />Create a Pyspark Streaming application that will continuously read data from Twitter, analyze them for their sentiment (sentiment classification - positive, neutral, negative), and send the sentiment values to Apache Kafka topic. Read the sentiment data from kafka topic using ElasticsearchLogstashKibana and visualize.
 <br /><br />
 ## Architecture:
