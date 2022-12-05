@@ -5,7 +5,7 @@ Create a Pyspark Streaming application that will continuously read data from Twi
 <br /><br />
 ## Architecture:<br />
 
-<br/><img src="flowchart.png" alt="flowchart" width="400" height="450" /><br/>
+<br/><img src="flowchart.png" alt="flowchart" /><br/>
    <br /><br />
 ## Steps to implement: <br />
 
@@ -58,8 +58,8 @@ This should display the health status as yellow denoting that index is set.<br/>
 	○	Real-time statistics on tweets will then be displayed<br/>
 	○	To generate graphs, create them in the dashboard with required fields.<br/>
 
-	<br/><img src="1.png" alt="1" width="400" height="450" /><br/>
-	<br/><img src="2.png" alt="2" width="400" height="450" /><br/>
-	<br/><img src="3.png" alt="3" width="400" height="450" /><br/>
+	<br/><img src="1.png" alt="1" /><br/>
+	<br/><img src="2.png" alt="2" /><br/>
+	<br/><img src="3.png" alt="3" /><br/>
 
 
